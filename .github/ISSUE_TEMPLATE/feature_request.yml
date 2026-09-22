@@ -1,0 +1,21 @@
+name: Feature request
+description: Propose a focused improvement to HASHME
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or workflow
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Reliability, privacy, or compatibility constraints

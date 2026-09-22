@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/HashMe.Core/HashMe.Core.csproj" />
+  <Project Path="src/HashMe.App/HashMe.App.csproj" />
+  <Project Path="tests/HashMe.Core.Tests/HashMe.Core.Tests.csproj" />
+</Solution>

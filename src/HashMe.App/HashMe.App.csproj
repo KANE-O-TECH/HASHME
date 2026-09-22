@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <AssemblyName>HASHME</AssemblyName>
+    <RootNamespace>KaneO.HashMe.App</RootNamespace>
+    <ApplicationIcon>Assets/HASHME.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>1.2.0</Version>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
+    <InformationalVersion>1.2</InformationalVersion>
+    <Product>KANE-O's HASHME</Product>
+    <Company>KANE-O-TECH</Company>
+    <Copyright>Copyright © 2026 KANE-O, trading as KANE-O-TECH. All rights reserved except as expressly permitted by the applicable licence.</Copyright>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../HashMe.Core/HashMe.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets/HASHME.png" />
+  </ItemGroup>
+</Project>

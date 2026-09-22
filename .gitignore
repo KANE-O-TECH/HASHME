@@ -1,0 +1,32 @@
+# Build outputs
+artifacts/
+**/bin/
+**/obj/
+**/__pycache__/
+*.py[cod]
+
+# IDE and user state
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Signing secrets and private keys
+*.pfx
+*.p12
+*.snk
+*.key
+*.pem
+*.cer
+*.crt
+
+# Local operating data
+settings.json
+hash-records.json
+
+# OS files
+Thumbs.db
+.DS_Store

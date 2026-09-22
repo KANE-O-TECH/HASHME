@@ -1,0 +1,103 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="HASHME"
+           Manufacturer="KANE-O-TECH"
+           Version="1.2.0"
+           UpgradeCode="9B89B81B-488F-4D8F-AC24-5D3E64833D44"
+           Scope="perUser"
+           InstallerVersion="500"
+           Compressed="yes">
+
+    <SummaryInformation Description="KANE-O's HASHME v1.2 for Windows 11+"
+                        Manufacturer="KANE-O-TECH" />
+    <MajorUpgrade AllowSameVersionUpgrades="yes"
+                  DowngradeErrorMessage="A newer version of HASHME is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="HASHME.ico" SourceFile="$(var.ProjectRoot)/src/HashMe.App/Assets/HASHME.ico" />
+    <Property Id="ARPPRODUCTICON" Value="HASHME.ico" />
+    <Property Id="ARPCONTACT" Value="hashme256@proton.me" />
+    <Property Id="ARPNOMODIFY" Value="1" />
+    <Property Id="MsiLogging" Value="voicewarmup" />
+    <UIRef Id="HashMeUI" />
+
+    <StandardDirectory Id="LocalAppDataFolder">
+      <Directory Id="KaneOFolder" Name="KANE-O">
+        <Directory Id="INSTALLFOLDER" Name="HASHME" />
+      </Directory>
+    </StandardDirectory>
+
+    <StandardDirectory Id="ProgramMenuFolder" />
+
+    <Feature Id="MainFeature" Title="HASHME" Level="1">
+      <ComponentRef Id="HashMeExecutable" />
+      <ComponentRef Id="HashMeReadme" />
+      <ComponentRef Id="HashMeReleaseNotes" />
+      <ComponentRef Id="DotNetLicense" />
+      <ComponentRef Id="DotNetNotices" />
+      <ComponentRef Id="HashMeLicense" />
+      <ComponentRef Id="HashMeNotice" />
+      <ComponentRef Id="HashMeBrandAssetsLicense" />
+    </Feature>
+
+    <Component Id="HashMeExecutable" Directory="INSTALLFOLDER" Guid="63DC0533-EB98-5A36-BA29-1681C32FCF57">
+      <File Id="HashMeExe" Source="$(var.PublishDir)/HASHME.exe" />
+      <Shortcut Id="HashMeStartMenuShortcut"
+                Directory="ProgramMenuFolder"
+                Name="HASHME"
+                Description="KANE-O's HASHME v1.2"
+                WorkingDirectory="INSTALLFOLDER"
+                Target="[#HashMeExe]"
+                Icon="HASHME.ico"
+                Advertise="no" />
+      <RemoveFolder Id="RemoveHashMeInstallFolder" On="uninstall" />
+      <RegistryValue Root="HKCU"
+                     Key="Software\KANE-O\HASHME"
+                     Name="InstalledVersion"
+                     Type="string"
+                     Value="1.2.0"
+                     KeyPath="yes" />
+    </Component>
+
+    <Component Id="HashMeReadme" Directory="INSTALLFOLDER" Guid="93318865-EA5B-5856-A0A0-374F48D7DFCC">
+      <File Id="HashMeReadmeFile" Source="$(var.PublishDir)/README.md" />
+      <RegistryValue Root="HKCU" Key="Software\KANE-O\HASHME\Components"
+                     Name="Readme" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <Component Id="HashMeReleaseNotes" Directory="INSTALLFOLDER" Guid="A5E03A61-CB87-5BA5-AC75-7B8CC41320EE">
+      <File Id="HashMeReleaseNotesFile" Source="$(var.PublishDir)/RELEASE_NOTES.md" />
+      <RegistryValue Root="HKCU" Key="Software\KANE-O\HASHME\Components"
+                     Name="ReleaseNotes" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <Component Id="DotNetLicense" Directory="INSTALLFOLDER" Guid="269B970B-9930-585F-AA41-A6EA78A7C5B5">
+      <File Id="DotNetLicenseFile" Source="$(var.PublishDir)/DOTNET_LICENSE.txt" />
+      <RegistryValue Root="HKCU" Key="Software\KANE-O\HASHME\Components"
+                     Name="DotNetLicense" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <Component Id="DotNetNotices" Directory="INSTALLFOLDER" Guid="CBF626AC-F2FE-5876-9368-C49FE7FE63C2">
+      <File Id="DotNetNoticesFile" Source="$(var.PublishDir)/DOTNET_THIRD_PARTY_NOTICES.txt" />
+      <RegistryValue Root="HKCU" Key="Software\KANE-O\HASHME\Components"
+                     Name="DotNetNotices" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <Component Id="HashMeLicense" Directory="INSTALLFOLDER" Guid="54574DC5-7E99-4A21-A67D-2148C03D0D88">
+      <File Id="HashMeLicenseFile" Source="$(var.PublishDir)/LICENSE.md" />
+      <RegistryValue Root="HKCU" Key="Software\KANE-O\HASHME\Components"
+                     Name="HashMeLicense" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <Component Id="HashMeNotice" Directory="INSTALLFOLDER" Guid="6F2A96C9-0830-4D50-9291-2141A68F2C5B">
+      <File Id="HashMeNoticeFile" Source="$(var.PublishDir)/NOTICE.md" />
+      <RegistryValue Root="HKCU" Key="Software\KANE-O\HASHME\Components"
+                     Name="HashMeNotice" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <Component Id="HashMeBrandAssetsLicense" Directory="INSTALLFOLDER" Guid="652030CE-18E4-45CE-BCA3-191A0692A5BE">
+      <File Id="HashMeBrandAssetsLicenseFile" Source="$(var.PublishDir)/BRAND_ASSETS_LICENSE.md" />
+      <RegistryValue Root="HKCU" Key="Software\KANE-O\HASHME\Components"
+                     Name="BrandAssetsLicense" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+  </Package>
+</Wix>
